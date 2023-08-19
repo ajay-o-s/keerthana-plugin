@@ -1,1 +1,3 @@
-# keerthana-plugin
+# keerthana plugins
+plugins
+

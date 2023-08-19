@@ -1,0 +1,42 @@
+{
+  "name": "@ajayos/keerthana",
+  "version": "18.0.8",
+  "description": "keerthana bot by Ajay o s",
+  "main": "index.js",
+  "bin": {
+    "keerthana": "bin/Authentication.js",
+    "index": "bin/index.js"
+  },
+  "scripts": {
+    "test": "node index.js --no-warnings",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ajayos/keerthana.git"
+  },
+  "keywords": [
+    "ajayos",
+    "keerthana"
+  ],
+  "author": "Ajay o s",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Ajayos/keerthana/issues"
+  },
+  "homepage": "https://github.com/Ajayos/keerthana#readme",
+  "nodemonConfig": {
+    "ignore": [
+      "plugins/*",
+      "node_modules/*",
+      "bin/*",
+      "tmp/*",
+      "logs/*"
+    ]
+  },
+  "dependencies": {
+    "@ajayos/nodemon": "^0.0.5",
+    "@ajayos/nodetime": "^1.0.1",
+    "@ajayos/whatsapp-api": "^15.0.9"
+  }
+}
