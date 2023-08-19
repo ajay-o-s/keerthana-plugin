@@ -1,0 +1,50 @@
+name: Build, Obfuscate, and Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-obfuscate-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install axios @actions/core @actions/github javascript-obfuscator
+
+      - name: Create folder
+        run: mkdir Public
+
+      - name: Copy files to folder
+        run: |
+          shopt -s extglob
+          cp -r !(Public) Public/
+
+      - name: Change to Public
+        run:  cd Public
+
+      - name: build and push
+        run: node ./.github/actions/build-and-push.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          OWNER: Ajayos
+          REPO: keerthana-plugin
+          INPUT_BRANCH_NAME: main
+        
+      - name: Deploy to gh-pages
+        run: |
+            git config user.email "actions@github.com"
+            git config user.name "GitHub Actions"
+            git checkout gh-pages
+            git add .
+            git commit -m "Deploy to gh-pages"
+            git push origin gh-pages
