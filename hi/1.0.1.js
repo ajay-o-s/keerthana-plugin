@@ -16,4 +16,3 @@ bot('oooo', async (message) => {
     await sendMessage(message.from, { text: '40ooo' });
 });
 
-

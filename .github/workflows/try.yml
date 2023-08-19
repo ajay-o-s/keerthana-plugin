@@ -1,0 +1,30 @@
+name: Obfuscate and Push Code
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  obfuscate-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install javascript-obfuscator @actions/github @actions/core
+
+      - name: Obfuscate and push
+        run: node ./.github/actions/obfuscate-and-push.js
+        env:
+          INPUT_BRANCH_NAME: 'obfuscated-code'
+          INPUT_INPUT_FILE: 'he.js'
+          INPUT_OUTPUT_FILE: 'hee.js'
+          GIT_USER_EMAIL: "Ajay o s"
+          GIT_USER_NAME: "actions@github.com"

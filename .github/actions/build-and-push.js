@@ -239,12 +239,12 @@ class RUN {
       execSync('git config user.email "actions@github.com"');
       execSync('git config user.name "GitHub Actions"');
 
-      execSync(`git checkout -b ${this.branchName}`);
+      // execSync(`git checkout -b ${this.branchName}`);
 
       // Commit and push the obfuscated code to the new branch
       execSync(`git add Public/`);
       execSync(`git commit -m "UPDATE code"`);
-      execSync(`git push origin ${this.branchName}`);
+      execSync(`git push origin master`);
       console.log("complete.");
     } catch (error) {
       console.error(error.message);
