@@ -1,6 +1,4 @@
-
 const { bot, sendMessage } = require('@ajayos/keerthana');
-
 bot('ooo', async (message) => {
     await sendMessage(message.from, { text: '3ooo' });
 });
